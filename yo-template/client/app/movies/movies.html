@@ -1,0 +1,57 @@
+<div class="container">
+
+  <h1>Movies</h1>
+  <input type="text" name="" value="" placeholder="search movie title" ng-model="moviesCtrl.search.title">
+  <input type="text" name="" value="" placeholder="search movie year" ng-model="moviesCtrl.search.year">
+  <button type="button" name="button" class="btn btn-primary" ng-click="moviesCtrl.searchMovies()">Search Movie</button>
+
+  <div class="container">
+    <h2>Movie details</h2>
+    <div class="row">
+      <div class="col-md-4 pull left">
+        <img src="{{moviesCtrl.movieData.Poster}}" alt="{{moviesCtrl.movieData.Title}}">
+      </div>
+      <div class="col-md-8 pull right">
+        <h3>{{moviesCtrl.movieData.Title}}</h3>
+        <h4>{{moviesCtrl.movieData.Year}}</h4>
+        <p>{{moviesCtrl.movieData.Plot}}</p>
+        <table class="table">
+          <tr>
+            <th>Genre: </td>
+            <td>{{moviesCtrl.movieData.Genre}}</td>
+          </tr>
+          <tr>
+            <th>Director: </td>
+            <td>{{moviesCtrl.movieData.Director}}</td>
+          </tr>
+          <tr>
+            <th>Actors: </td>
+            <td>{{moviesCtrl.movieData.Actors}}</td>
+          </tr>
+          <tr>
+            <th>Runtime:</th>
+            <td>{{moviesCtrl.movieData.Runtime}}</th>
+          </tr>
+        </table>
+        <button type="button" class="btn btn-default" ng-click="moviesCtrl.addMovie()">Add Movie</button>
+      </div>
+    </div>
+
+    <h2>Available movies</h2>
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Runtime</th>
+        <th>functions</th>
+      </tr>
+      <tr ng-repeat="movie in moviesCtrl.movies">
+        <td>{{movie.Title}}</td>
+        <td>{{movie.Genre}}</td>
+        <td>{{movie.Runtime}}</td>
+        <td><button type="button" class="btn btn-danger" ng-click="moviesCtrl.deleteMovie(movie)">X</button></td>
+      </tr>
+    </table>
+
+  </div>
+</div>

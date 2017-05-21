@@ -1,0 +1,16 @@
+<h2>Movie Timings</h2>
+
+<ul class="nav nav-pills">
+  <li ng-repeat="date in timingsCtrl.dates" ><a data-toggle="pill" ng-click="timingsCtrl.selectDate(date)" href="#theatre-timings">{{date}}</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="theatre-timings" class="tab-pane">
+    <table class="table">
+      <tr ng-repeat="mapping in timingsCtrl.filteredMappings">
+        <td>{{mapping.theatre}}</td>
+        <td ng-repeat="timing in mapping.timings"><a ng-click="timingsCtrl.selectTimings(timing)">{{timing}}</a></td>
+      </tr>
+    </table>
+  </div>
+</div>

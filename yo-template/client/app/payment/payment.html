@@ -1,0 +1,169 @@
+<div class="container-fluid">
+	<div class="row">
+Send tickets to
+			<form role="form">
+        <div class="col-md-3">
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email Id" required id="email" />
+				</div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+  					<input type="tel" class="form-control" placeholder="Mobile No." required id="mobile" />
+  				</div>
+        </div>
+        <div class="col-md-2">
+
+    			<button type="button" class="btn btn-success">
+    				Continue
+    			</button>
+    		</div>
+			</form>
+	</div>
+
+
+
+
+
+
+
+<div class="row">
+  <h2>Payment options</h2>
+    <ul class="nav nav-pills nav-stacked col-md-2">
+    <li class="active"><a data-toggle="pill" href="#pay">QuickPay</a></li>
+    <li><a data-toggle="pill" href="#card">Credit/Debit Card</a></li>
+    <li><a data-toggle="pill" href="#netbank">Net Banking</a></li>
+  </ul>
+
+  <div class="tab-content col-md-10">
+
+    <!-- <div id="card"  class="tab-pane fade"> -->
+
+
+
+      <div id="card" class=" tab-pane fade col-xs-12 col-md-4">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h3 class="panel-title">
+                              Payment Details
+                          </h3>
+                      </div>
+                      <div class="panel-body">
+                          <form role="form">
+														<div class="form-group">
+	                              <label for="cardName">
+	                                  Name</label>
+	                              <div class="input-group">
+	                                  <input type="text" class="form-control" id="cardName" placeholder="Enter name on the card"
+	                                      required autofocus />
+	                              </div>
+	                          </div>
+                          <div class="form-group">
+                              <label for="cardNumber">
+                                  CARD NUMBER</label>
+                              <div class="input-group">
+                                  <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                      required />
+                                  <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-xs-7 col-md-7">
+                                  <div class="form-group">
+                                      <label for="expityMonth">
+                                          EXPIRY DATE</label>
+                                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                                          <input type="text" class="form-control" id="expityMonth" min="2" placeholder="MM" required />
+                                      </div>
+                                      <div class="col-xs-6 col-lg-6 pl-ziro">
+                                          <input type="text" class="form-control" id="expityYear" min="2" max="2" placeholder="YY" required /></div>
+                                  </div>
+                              </div>
+                              <div class="col-xs-5 col-md-5 pull-right">
+                                  <div class="form-group">
+                                      <label for="cvCode">
+                                          CV CODE</label>
+                                      <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                  </div>
+                              </div>
+                          </div>
+                          </form>
+                      </div>
+                  </div>
+                  <ul class="nav nav-pills nav-stacked">
+                      <li class="btn btn-primary btn-lg btn-block" class="active"><span class="badge pull-right">4200</span> Final Payment
+                      </li>
+                  </ul>
+                  <br/>
+                  <a href="" ng-click="paymentCtrl.bookSeats()" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+              </div>
+
+
+
+
+
+
+      <!-- <form role="form">
+        <div class="form-group">
+				<input type="number" class="form-control" placeholder="Enter Card No." required/>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter name on the card" required="true"/>
+      </div>
+      <div class="row">
+        <div class="form-group">
+        <input type="number" class="form-control" placeholder="MM" required="true"/>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" placeholder="YY" required="true"/>
+      </div>
+      <div class=" form-group pull-right ">
+        <input type="number" class="form-control" placeholder="CVV" required="true"/>
+      </div>
+    </div>
+    <div class="col-md-3 form-group">
+        <button type="submit" class="form-control">Make Payment</button>
+      </div>
+			</form> -->
+
+    <!-- </div> -->
+    <div id="netbank" class="tab-pane fade">
+
+			<table>
+			<form role="form">
+<tr>
+			<td><label class="radio-inline col-md-3">
+  <input type="radio" ng-model="bankname" name="inlineRadioOptions" class="form-control" id="inlineRadio1" value="icici"><img src="assets/images/icici.jpg"/>
+</label></td>
+<td><label class="radio-inline col-md-3">
+  <input type="radio" ng-model="bankname"  name="inlineRadioOptions" class="form-control" id="inlineRadio2" value="sbi"> <img src="assets/images/sbi.jpg"/>
+</label></td>
+<td><label class="radio-inline col-md-3">
+  <input type="radio" ng-model="bankname" name="inlineRadioOptions" class="form-control" id="inlineRadio3" value="citi"> <img src="assets/images/citi.jpg"/>
+</label></td>
+</tr>
+<tr>
+<td><div class="form-group"><label class="radio-inline col-md-3">
+<input type="radio" ng-model="bankname" class="form-control" name="inlineRadioOptions" id="inlineRadio1" value="axis"><img src="assets/images/axis.jpg"/>
+</label></div></td>
+<td><div class="form-group"><label class="radio-inline col-md-3">
+<input type="radio" ng-model="bankname" class="form-control" name="inlineRadioOptions" id="inlineRadio1" value="hdfc"><img src="assets/images/hdfc.jpg"/>
+</label></div></td>
+<td><div class="form-group"><label class="radio-inline col-md-3">
+<input type="radio" ng-model="bankname" class="form-control" name="inlineRadioOptions" id="inlineRadio1" value="Kotak"><img src="assets/images/Kotak.jpg"/>
+</label></div></td>
+</tr>
+<tr><td></td></tr>
+<tr><td>
+	<br/><div class="form-group"><button ng-click="paymentCtrl.netbanking(bankname)" class="btn btn-danger form-control" type="submit">Make Payment</button></div></td></tr>
+		</form>
+</table>
+    </div>
+  </div>
+  <!-- <div class="col-md-4">
+    Booking Summary
+    <p>
+      Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
+    </p>
+  </div> -->
+</div>

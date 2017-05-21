@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <h2 class="">CITIES</h2>
+    <!-- Button trigger modal -->
+    <input type="text" name="" value="" placeholder="Enter new city" ng-model="citiesCtrl.name">
+    <button type="button" class="btn btn-default" ng-click="citiesCtrl.addCity()">
+      Add City
+    </button>
+  </div>
+  <div>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Functions</th>
+      </tr>
+      <tr ng-repeat="city in citiesCtrl.cities">
+        <td>{{city.name}}</td>
+        <td>
+          <button type="button" name="button" class="btn btn-danger" ng-click="citiesCtrl.deleteCity(city)">Delete</button>
+          <button type="button" name="button" class="btn btn-warning" ng-click="citiesCtrl.updateCity(city)">Update</button>
+        </td>
+      </tr>
+    </table>
+  </div>

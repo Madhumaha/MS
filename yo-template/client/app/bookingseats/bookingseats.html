@@ -1,0 +1,411 @@
+<!-- <div class="container">
+  <div class="col-md-8">
+    <h2>Seating</h2>
+    <h5>GOLD</h5>
+    <table class="table">
+    <tr  ng-repeat="row in bookingseatsCtrl.rows">
+      <td><div>
+        {{row}}
+      </div>
+    </td>
+    <td ng-repeat="col in bookingseatsCtrl.columns" >
+      <div class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'gold')">
+        {{col}}
+      </div> -->
+      <!-- <div class="ghost"></div>
+      <div class="seats" ng-class="{'selected': seatingCtrl.isSelected(row, col), 'booked': seatingCtrl.isBooked(row, col)}"  ng-click="seatingCtrl.selectSeat(row, col)">
+        {{col}}
+      </div> -->
+    <!-- </td>
+  </tr>
+  </table>
+    </div>
+    <div class="col-md-4">
+      <h2>Booking Summary</h2>
+      <h3>{{bookingseatsCtrl.movieDetails.name}}</h3>
+      <div class="">
+        <h3>Gold</h3>
+        <table>
+          <tr>
+            <td>No of seats:</td>
+            <td ng-repeat="seat in bookingseatsCtrl.bookingForm.gold track by $index">{{seat.row}}{{seat.col}},</td>
+          </tr>
+          <tr>
+            <td>Seat Count:</td>
+            <td>{{bookingseatsCtrl.bookingForm.gold.length}} Seats</td>
+          </tr>
+          <tr>
+            <td>Price for one ticket:</td>
+            <td>200</td>
+          </tr>
+          <tr>
+            <td>Gold tickets total:</td>
+            <td>Rs {{bookingseatsCtrl.bookingForm.gold.length * 200}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="">
+        <h3>Silver</h3>
+        <table>
+          <tr>
+            <td>No of seats:</td>
+            <td ng-repeat="seat in bookingseatsCtrl.bookingForm.silver track by $index">{{seat.row}}{{seat.col}},</td>
+          </tr>
+          <tr>
+            <td>Seat Count:</td>
+            <td>{{bookingseatsCtrl.bookingForm.silver.length}} Seats</td>
+          </tr>
+          <tr>
+            <td>Price for one ticket:</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Silver tickets total:</td>
+            <td>Rs {{bookingseatsCtrl.bookingForm.silver.length * 100}}</td>
+          </tr>
+        </table>
+        <p></p>
+        <table>
+          <tr>
+            <td>Total Seat count:</td>
+            <td>{{bookingseatsCtrl.selectedSeats.length}} Seats</td>
+          </tr>
+          <tr>
+            <td>Total Seat Price:</td>
+            <td>Rs{{ (bookingseatsCtrl.bookingForm.gold.length * 200) + (bookingseatsCtrl.bookingForm.silver.length * 100) }}</td>
+          </tr>
+          <tr>
+            <td>Internet fee:</td>
+            <td>Rs 30</td>
+          </tr>
+          <tr>
+            <th>Grand Total</th>
+            <td>{{ bookingseatsCtrl.bookingForm.grandTotal }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+<div class="col-md-8">
+    <h5>SILVER</h5>
+      <table class="table">
+    <tr class=""  ng-repeat="row in bookingseatsCtrl.rows ">
+      <td><div class="inline">
+        {{row}}
+      </div>
+    </td>
+      <td ng-repeat="col in bookingseatsCtrl.columns">
+        <div class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'silver')">
+          {{col}}
+        </div>
+      </td>
+    </tr>
+  </table>
+    </div>
+<div class="col-md-6">
+    <button type="button" name="button" class="btn btn-success" ng-click="bookingseatsCtrl.bookSeats()">Book tickets</button>
+  </div>
+
+  </div> -->
+
+
+  <!-- <div class="col-md-6">
+    <h2>Booking Summary</h2>
+    <h3>{{bookingseatsCtrl.movieDetails.name}}</h3>
+    <div class="">
+      <h3>Gold</h3>
+      <table>
+        <tr>
+          <td>No of seats:</td>
+          <td ng-repeat="seat in bookingseatsCtrl.bookingForm.gold track by $index">{{seat.row}}{{seat.col}},</td>
+        </tr>
+        <tr>
+          <td>Seat Count:</td>
+          <td>{{bookingseatsCtrl.bookingForm.gold.length}} Seats</td>
+        </tr>
+        <tr>
+          <td>Price for one ticket:</td>
+          <td>200</td>
+        </tr>
+        <tr>
+          <td>Gold tickets total:</td>
+          <td>Rs {{bookingseatsCtrl.bookingForm.gold.length * 200}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="">
+      <h3>Silver</h3>
+      <table>
+        <tr>
+          <td>No of seats:</td>
+          <td ng-repeat="seat in bookingseatsCtrl.bookingForm.silver track by $index">{{seat.row}}{{seat.col}},</td>
+        </tr>
+        <tr>
+          <td>Seat Count:</td>
+          <td>{{bookingseatsCtrl.bookingForm.silver.length}} Seats</td>
+        </tr>
+        <tr>
+          <td>Price for one ticket:</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>Silver tickets total:</td>
+          <td>Rs {{bookingseatsCtrl.bookingForm.silver.length * 100}}</td>
+        </tr>
+      </table>
+      <p></p>
+      <table>
+        <tr>
+          <td>Total Seat count:</td>
+          <td>{{bookingseatsCtrl.selectedSeats.length}} Seats</td>
+        </tr>
+        <tr>
+          <td>Total Seat Price:</td>
+          <td>Rs{{ (bookingseatsCtrl.bookingForm.gold.length * 200) + (bookingseatsCtrl.bookingForm.silver.length * 100) }}</td>
+        </tr>
+        <tr>
+          <td>Internet fee:</td>
+          <td>Rs 30</td>
+        </tr>
+        <tr>
+          <th>Grand Total</th>
+          <td>{{ bookingseatsCtrl.bookingForm.grandTotal }}</td>
+        </tr>
+      </table>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+<!--new booking-->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul  ng-repeat="movie in $ctrl.myMovies">
+        <li>{{movie.title}}</li>
+      </ul>
+    </div>
+  </div> -->
+  <script language="javascript" type="text/javascript">
+
+var count=0;
+var sn="";
+var seats=[];
+var subtotal=0;
+
+$(document).ready(function(){
+    //$('#myModal').modal('show');
+  $("img").click(function(){
+    var id = $(this).attr('id');
+    var path = $('#'+id).attr('src');
+        var x=path.substring(path.lastIndexOf('W'),path.length);
+        var y=path.substring(path.lastIndexOf('G'),path.length);
+        if(x=="W_chair.gif")
+        {
+        $('#'+id).attr('src','assets/Images/G_chair.gif');
+        // count++;
+        seats.push(id);
+        }
+        else if(y=="G_chair.gif")
+        {
+        $('#'+id).attr('src','assets/Images/W_chair.gif');
+      //   removeTiming(i){
+      //   seats.splice(i,1);
+      // }
+        // if(!count==0){
+        // count--;
+        // }
+      }
+
+        // subtotal=count*200;
+        // document.getElementById("seatno").innerHTML=seats;
+        // document.getElementById("subtotal").innerHTML=subtotal;
+        // document.getElementById("seatcount").innerHTML=count;
+  });
+});
+
+  </script>
+
+  <!-- <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Select Class</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <select class="form-control">
+                <option>Select Class</option>
+                <option>GOLD</option>
+                <option>SILVER</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <select class="form-control">
+                <option>No. of Seats</option>
+                <option>0</option>
+                <option>1</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+          </div>
+        </div>
+
+      </div>
+    </div> -->
+
+
+
+
+
+      <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8">
+      <div>
+        <table align="center" class="table table-default" id="table1">
+              <tr>
+                  <td style="text-align: center">&nbsp;</td>
+                  <td colspan="25" style="text-align: center">GOLD</td>
+              </tr>
+              <tr>
+                  <td>
+                      &nbsp;</td>
+                  <td ng-repeat="row in bookingseatsCtrl.rows">
+                      {{row}}</td>
+                      <td></td>
+                      <td ng-repeat="row in bookingseatsCtrl.rows1">{{row}}</td>
+              </tr>
+              <tr ng-repeat="col in bookingseatsCtrl.columns">
+                  <td>
+                      {{col}}</td>
+                  <td ng-repeat="row in bookingseatsCtrl.rows">
+                      <img alt="" class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'gold')" id={{row}}{{col}} src="assets/Images/W_chair.gif" style="width: 17px; height: 17px" />
+                    </td>
+                    <td></td>
+                    <td ng-repeat="row in bookingseatsCtrl.rows1">
+                        <img alt="" class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'gold')" id={{row}}{{col}} src="assets/Images/W_chair.gif" style="width: 17px; height: 17px" />
+                      </td>
+                  </tr>
+                  <tr>  <td style="text-align: center">&nbsp;</td>
+                  <td colspan="25" style="text-align: center">SILVER</td>
+                    <td ng-repeat="row in bookingseatsCtrl.rows">
+                        <!-- <img alt="" id={{row}}{{col}} src="assets/Images/W_chair.gif" style="width: 17px; height: 17px" /> -->
+                      </td></tr>
+                  <tr ng-repeat="col in bookingseatsCtrl.columns1">
+                      <td>
+                          {{col}}</td>
+                          <td ng-repeat="row in bookingseatsCtrl.rows">
+                              <img alt="" class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'silver')" id={{row}}{{col}} src="assets/Images/W_chair.gif" style="width: 17px; height: 17px" />
+                            </td>
+                            <td></td>
+                      <td ng-repeat="row in bookingseatsCtrl.rows1">
+                          <img alt="" class="seats" ng-class="{'selected': bookingseatsCtrl.isSelected(row, col), 'booked': bookingseatsCtrl.isBooked(row, col)}"  ng-click="bookingseatsCtrl.selectSeat(row, col, 'silver')" id={{row}}{{col}} src="assets/Images/W_chair.gif" style="width: 17px; height: 17px" />
+                        </td>
+
+                      </tr>
+              <tr>
+                  <td>
+                      &nbsp;</td>
+                  <td colspan="25" align="center">
+                      <img alt="" src="assets/Images/p3_r1_c1.jpg" style="width: 800px; height: 64px" />
+                    </td>
+
+              </tr>
+          </table>
+      </div>
+</div>
+<div class="col-lg-4">
+  <div class="jumbotron well">
+        <table >
+          <thead>
+          <tr>
+            <td colspan="2"><h2>Booking Summary</h2></td>
+          </tr>
+          <tr><td><h3>Movie Name : {{bookingseatsCtrl.movieDetails.name}}</h3></td></tr>
+        </thead>
+        <tr>
+          <td>Class : </td>
+          <td><span id="seatclass">GOLD</span></td>
+        </tr>
+          <tr>
+            <td><span>No. of seat selected : </span></td>
+            <td>{{bookingseatsCtrl.bookingForm.gold.length}} Seats</td>
+          </tr>
+          <tr>
+            <td>Seat No : </td>
+            <td ng-repeat="seat in bookingseatsCtrl.bookingForm.gold track by $index">{{seat.row}}{{seat.col}},</td>
+          </tr>
+          <tr>
+          <td>Price for one ticket:</td>
+          <td>200</td>
+        </tr>
+          <tr>
+            <td>Sub Total : </td>
+            <td>Rs {{bookingseatsCtrl.bookingForm.gold.length * 200}}</td>
+          </tr>
+          <tr>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td>Class : </td>
+            <td><span id="seatclass">SILVER</span></td>
+          </tr>
+            <tr>
+              <td><span>No. of seat selected : </span></td>
+              <td>{{bookingseatsCtrl.bookingForm.silver.length}} Seats</td>
+            </tr>
+            <tr>
+              <td>Seat No : </td>
+              <td ng-repeat="seat in bookingseatsCtrl.bookingForm.silver track by $index">{{seat.row}}{{seat.col}},</td>
+            </tr>
+            <tr>
+          <td>Price for one ticket:</td>
+          <td>100</td>
+        </tr>
+            <tr>
+              <td>Sub Total : </td>
+              <td>Rs {{bookingseatsCtrl.bookingForm.silver.length * 100}}</td>
+            </tr>
+          </table>
+          <table>
+        <tr>
+          <td>Total Seat count:</td>
+          <td>{{bookingseatsCtrl.selectedSeats.length}} Seats</td>
+        </tr>
+        <tr>
+          <td>Total Seat Price:</td>
+          <td>Rs{{ (bookingseatsCtrl.bookingForm.gold.length * 200) + (bookingseatsCtrl.bookingForm.silver.length * 100) }}</td>
+        </tr>
+        <tr>
+          <td>Internet fee:</td>
+          <td>Rs 30</td>
+        </tr>
+        <tr>
+          <th>Grand Total</th>
+          <td>{{ bookingseatsCtrl.bookingForm.grandTotal }}</td>
+        </tr>
+
+          <tr>
+            <td colspan="2">
+              <br/><br/><button type="button" ng-click="bookingseatsCtrl.bookSeats()" class="btn btn-success btn-lg btn-block">Proceed to Payment</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+</div>
+</div>
+</div>
