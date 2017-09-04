@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Assign the movie to theatre</h1>
+  <form>
+    <!-- {{theatreMappingCtrl.movies}} -->
+    <div class="form-group">
+      <label for="sel1">Select City:</label>
+      <select class="form-control" id="sel1" ng-model="runningmoviesCtrl.theatreForm.city">
+        <option ng-repeat="city in runningmoviesCtrl.cities">{{ city.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="sel1">Select Theatre:</label>
+      <select class="form-control" id="sel1" ng-model="runningmoviesCtrl.theatreForm.theatre" >
+        <option ng-repeat="theatre in runningmoviesCtrl.cityMappings[runningmoviesCtrl.theatreForm.city]">{{ theatre.name }} - {{theatre.location}}</option>
+      </select>
+    </div>
+  <div class="form-group">
+    <label for="sel1">Select Movie:</label>
+    <select class="form-control" id="sel1" ng-model="runningmoviesCtrl.theatreForm.movie">
+      <option ng-repeat="movie in runningmoviesCtrl.movies">{{ movie.Title }}</option>
+    </select>
+  </div>
+  <button type="button" name="button" class="btn btn-primary" ng-click="runningmoviesCtrl.addMapping()">Search Mapping</button>
+  <div class="row">
+    <div>
+      <h3>Add dates</h3>
+      <input type="date" name=""  ng-model="runningmoviesCtrl.theatreForm.date">
+      <button type="button" name="button" class="btn btn-submit" ng-click="runningmoviesCtrl.addDate()">Add Date</button>
+      <table class="table col-md-6">
+        <tr ng-repeat="date in runningmoviesCtrl.mapping.dates track by $index">
+          <td>{{date}}</td>
+          <td><button type="button" name="button" class="btn btn-danger" ng-click="runningmoviesCtrl.removeDate($index)">x</button></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h3>Add Timings</h3>
+      <input type="time" name="" value="" ng-model="runningmoviesCtrl.theatreForm.timing">
+      <button type="button" name="button" class="btn btn-submit" ng-click="runningmoviesCtrl.addTiming()">Add timing</button>
+    </div>
+    <table class="table col-md-6">
+      <tr ng-repeat="timing in runningmoviesCtrl.mapping.timings track by $index">
+        <td>{{timing}}</td>
+        <td><button type="button" name="button" class="btn btn-danger" ng-click="runningmoviesCtrl.removeTiming($index)">x</button></td>
+      </tr>
+    </table>
+  </div>
+  <button type="submit" class="btn btn-default" ng-click="runningmoviesCtrl.PostOrUpdateMapping()">Save</button>
+  <button type="button" name="button" class="btn btn-danger" ng-click="runningmoviesCtrl.deleteMapping()">Delete mapping</button>
+</form>
+
+</div>

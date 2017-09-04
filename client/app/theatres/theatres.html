@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>THEATRES</h2>
+
+  <div class="form-group">
+    <label for="sel1">Select City</label>
+    <select class="form-control" id="sel1" ng-model="theatresCtrl.theatre.city" >
+      <option ng-repeat="city in theatresCtrl.cities">{{ city.name }}</option>
+    </select>
+
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+
+      <th>No of Screens</th>
+    </tr>
+
+    <tr>
+      <td><input type="text" name="" value="" ng-model="theatresCtrl.theatre.name" placeholder="Enter Theatre Name"></td>
+      <td><input type="text" name="" value="" ng-model="theatresCtrl.theatre.location" placeholder="Enter Theatre Location"></td>
+
+      <td><input type="text" name="" value="" ng-model="theatresCtrl.theatre.screenCount" placeholder="Enter Screen Count"></td>
+      <td><button type="button" class="btn btn submit" name="button" ng-click="theatresCtrl.addTheatre()">Add Theatre</button></td>
+    </tr>
+
+    <tr ng-repeat="theatre in theatresCtrl.theatres">
+      <td><input type="text" name="" class="table-inputs" value="{{theatre.name}}" ng-model="theatre.name" ng-click="enableUpdate = true" ng-blur="theatresCtrl.getTheatres(theatre)"></td>
+      <td><input type="text" name="" class="table-inputs" value="{{theatre.location}}" ng-model="theatre.location" ng-click="enableUpdate = true" ng-blur="theatresCtrl.getTheatres(theatre)"></td>
+    
+      <td><input type="text" name="" class="table-inputs" value="{{theatre.screenCount}}" ng-model="theatre.screenCount" ng-click="enableUpdate = true" ng-blur="theatresCtrl.getTheatres(theatre)"></td>
+      <td>
+        <button class="btn btn-danger" type="button" name="button" ng-click="theatresCtrl.deleteTheatre(theatre)">X</button>
+        <button id="update-button" ng-disabled="!enableUpdate" class="btn btn-warning"type="button" name="button" ng-mousedown="theatresCtrl.saveTheatre(theatre)">Update</button>
+      </td>
+    </tr>
+  </table>
+</div>

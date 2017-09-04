@@ -1,0 +1,156 @@
+<!-- <header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>'Allo, 'Allo!</h1>
+    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Features:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
+        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <form class="thing-form">
+    <label>Syncs in realtime across clients</label>
+    <p class="input-group">
+      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="$ctrl.newThing">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Add New</button>
+      </span>
+    </p>
+  </form>
+</div> -->
+
+<!--Paul-->
+<!--Carousel-->
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+<div id="carousel-example-generic" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner ">
+    <div class="item active ">
+      <img src="assets/images/yr1.jpg" alt="">
+
+    </div>
+    <div class="item">
+      <img src="assets/images/yr2.jpg" alt="">
+
+    </div>
+   <div class="item">
+      <img src="assets/images/yr3.jpg" alt="">
+
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+
+  </a>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="panel panel-default">
+        <div class="panel-body">
+
+          <form id="searchbar" class="form-inline">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-lg btn-danger" data-toggle="modal" data-target="#city-modal">
+              {{$ctrl.query.city || "CITY"}}
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="city-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Cities</h4>
+                  </div>
+                  <div class="modal-body">
+                    <ul class="list-group">
+                      <li class="list-group-item" data-dismiss="modal" ng-repeat="city in $ctrl.cities" ng-click="$ctrl.filterMovies(city)">{{ city }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input type="text" ng-model="$ctrl.query.movie" class="form-group form-control input-lg" placeholder="Enter Movie Name">
+          </form>
+        </div>
+      </div>
+
+<!--Now showing movies-->
+
+
+<div class="panel panel-default" ng-show="$ctrl.showMovies">
+      <div class="panel-heading">
+        <h2>Now showing</h2>
+      </div>
+      <div class="panel-body">
+
+        <div class="col-sm-3" ng-repeat="movie in $ctrl.filteredMovies | filter:{ Title: $ctrl.query.movie }">
+
+          <div class="thumbnail">
+            <div class="cont">
+              <img class="blurImg" src="{{movie.Poster}}" alt="{{movie.Title}}" class="img-responsive">
+              <div class="rateCont">
+                <!-- <p>Average Rating = {{mainCtrl.avgR | number:2}}</p> -->
+                <div ng-show="$ctrl.canRate" id="rateYo">
+
+                </div>
+                <a ng-show="$ctrl.canRate" class="btn btn-info" id="rateBtn" ng-click="$ctrl.rate(movie.title)">RATE</a>
+              </div>
+            </div>
+
+            <div class="caption">
+              <h3>{{movie.Title}}</h3>
+              <p><bold>genre:</bold> {{movie.Genre}}</p>
+
+              <div class="row">
+                <button class="btn btn-primary col col-md-12 align-self-center" ng-click="$ctrl.selectMovie(movie.Title)">TIMINGS</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- <div class="">
+  <div class="">
+    <h1>Movies currently playing</h1>
+    <div class="row">
+      <div class="col-sm-2" ng-repeat="movie in $ctrl.movies">
+        <div class="thumbnail">
+          <img src="{{movie.Poster}}" alt="{{movie.Title}}">
+          <a class="btn col-md-12 btn-primary" ng-click="$ctrl.selectMovie(movie.Title)">SHOW TIMINGS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
