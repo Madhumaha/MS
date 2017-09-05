@@ -27,12 +27,12 @@ class TheatresComponent {
 }
 
 getTheatres(theatre){
-    // console.log('sdfd');
+
     this.enableUpdate = false;
     this.$http.get('/api/theatresendpoints').then(response =>{
       this.theatres = response.data;
       console.log(this.theatres);
-      // this.socket.syncUpdates('theatre', this.theatres);
+    
     });
   }
 

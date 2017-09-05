@@ -11,6 +11,6 @@ var MoviesendpointSchema = new mongoose.Schema({
   Director: String,
   Runtime: String,
   Poster:String
-});
+  });
 
 export default mongoose.model('Moviesendpoint', MoviesendpointSchema);

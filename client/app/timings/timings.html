@@ -6,17 +6,6 @@
   <li ng-repeat="date in timingsCtrl.newDates" ><a data-toggle="pill" ng-click="timingsCtrl.getTheaterDetails(date)"><span class="glyphicon glyphicon-calendar"></span>{{ date }}</a></li>
 </ul>
 
-<!-- <div class="tab-content">
-  <div id="theatre-timings" class="tab-pane">
-    <table class="table">
-      <tr ng-repeat="mapping in timingsCtrl.filteredMappings">
-        <td>{{mapping.theatre}}</td>
-        <td ng-repeat="timing in mapping.timings"><a ng-click="timingsCtrl.selectTimings(timing)">{{timing}}</a></td>
-      </tr>
-    </table>
-  </div>
-</div> -->
-
 <div>
     <table class="table table-striped">
       <tr ng-repeat="mapping in timingsCtrl.theatersData">

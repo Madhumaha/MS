@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Receipt</h1>
+  <div class="row bg-info">
+    <div class="col-md-3">
+      <img src="assets/images/qr.png" alt="">
+    </div>
+    <div class="col-md-9">
+      <table class="table table-striped inline">
+        <tr>
+          <th>Movie Name</th>
+          <td>{{receiptCtrl.bookingService.movieDetails.name}}</td>
+        </tr>
+        <tr>
+          <th>Theatre Name</th>
+          <td>{{receiptCtrl.bookingService.movieDetails.theatre}}</td>
+        </tr>
+        <tr>
+          <th>Amount Paid</th>
+          <td>{{"Rs" + receiptCtrl.bookingService.movieDetails.grandTotal}}</td>
+        </tr>
+        <tr>
+          <th>Booked Seat numbers</th>
+          <td><a class="no-decoration" ng-repeat="seat in receiptCtrl.bookingService.movieDetails.selectedSeats track by $index">{{seat.row + seat.col + "," }}</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <h1>Thank you for Booking!</h1>
+</div>

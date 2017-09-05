@@ -14,9 +14,6 @@ class BookingseatsComponent {
     this.rows1=['M','N','O','P','Q','R','S','T','U','V','W','X','Y'];
     this.columns = [1,2,3,4,5];
     this.columns1=[6,7,8,9,10];
-    // this.rows = ['A','B','C','D','E','F'];
-    // this.columns = [1,2,3,4,5,6,7,8,9,10];
-    // this.selected = false;
     this.selectedSeats = [];
     this.bookedSeats = [];
     this.bookingForm = {};
@@ -27,57 +24,39 @@ class BookingseatsComponent {
 
   $onInit(){
     this.movieDetails = this.bookingService.getDetails();
-  //   this.$http.get('/api/paymentendpoints').then(response => {
-  //   this.bookedSeats = _.flatten( _.map( _.filter(response.data, (detail)=>{ return detail.name === this.movieDetails.name && detail.theatre === this.movieDetails.theatre } ), (seat)=>{ return seat.bookedSeats }) );
-  //   console.log('Booked seats are '+JSON.stringify(this.bookedSeats));
-  // } );
   this.$http.get('/api/paymentendpoints').then( response=>{
       this.payments = response.data;
-    //  this.paying=JSON.stringify(this.payments);
-    //  console.log(this.paying);
+      this.bookedSeats = _.flatten( _.map( _.filter(response.data, (detail)=>{ return detail.name === this.movieDetails.name && detail.theatre === this.movieDetails.theatre } ), (seat)=>{ return seat.bookedSeats }) );
       for(let pay of this.payments)
       {
         console.log(pay.bookedSeats);
         for(let seat of pay.bookedSeats)
         {
+          //seats after payment
           console.log('paid seats are '+seat.row+' '+seat.col);
           var images = $(".seats");
-
-          // var seatpaid=document.getElementsByClassName('seatbook');
-          // console.log(seatpaid);
           var seatno=(seat.row).toString()+(seat.col).toString();
+          console.log('seatno are '+seatno);
            for(var i=0;i<images.length;i++)
            {
-          console.log(images[i].id);
-          if(divs[i].id===seatno)
+             //comparing image id with paid seatno
+          var imgid=images[i].id.toString();
+          if(imgid===seatno)
           {
-          images[i].style.backgroundColor='grey';
+            console.log('image matching with seat');
+            //changing image to grey if seat is already booked
+          images[i].src="assets/Images/R_chair.gif"
           images[i].disabled=true;
         }
            }
         }
       }
-      //console.log('paid seats '+JSON.stringify(this.payments));
-
   })
     console.log(this.movieDetails);
     console.log(this.rows);
     console.log(this.columns);
-    // this.bookedSeats = this.movieDetails.bookedSeats;
     console.log(this.bookedSeats);
 
-  //   this.$http.get('/api/paymentendpoints').then(response =>{
-  //   this.payments = response.data;
-  //   console.log('payments '+JSON.stringify(this.payments));
-  //   for(let payment of this.payments){
-  //     console.log('Paid seats  '+JSON.stringify(payment.selectedSeats));
-  //     for(let seatno of payment.selectedSeats)
-  //     {
-  //       console.log('paid seat no r '+seatno.row+' '+seatno.col);
-  //
-  //     }
-  //   }
-  // });
     // this.$http.get('/api/paymentendpoints').then(response =>{
     //   this.theatres = response.data;
     //   this.cityMappings = _.groupBy(this.theatres, (theatre)=>{ return theatre.city; });
@@ -103,7 +82,23 @@ class BookingseatsComponent {
   }
 
   selectSeat(row, col, classType){
+    for(let pay of this.payments)
+    {
+      console.log(pay.bookedSeats);
+      for(let seat of pay.bookedSeats)
+      {
+        //seats after payment
+        console.log('paid seats are '+seat.row+' '+seat.col);
+        if(row==seat.row&&col==seat.col)
+        {
+          alert('Seat is already booked Plz select any other seat')
+          document.getElementById('bookingbtn').disabled=true;
+
+        }
+        else
+        {
     if(!this.isSelected(row, col) && !this.isBooked(row, col)){
+document.getElementById('bookingbtn').disabled=false;
       console.log("selected")
       this.selectedSeats.push({
         row: row,
@@ -122,6 +117,9 @@ class BookingseatsComponent {
     console.log(this.bookingForm);
     console.log(this.selectedSeats);
   }
+}
+}
+}
 
   bookSeats(){
     this.bookingService.addSelected(this.selectedSeats, this.bookingForm.grandTotal);
@@ -139,25 +137,7 @@ class BookingseatsComponent {
 } else {
     document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
 }
-    console.log("shoop baby");
-    // this.bookingService.addSelected(this.selectedSeats, this.bookingForm.grandTotal);
-    // console.log(this.bookingService.getDetails());
-    // console.log(this.bookingService.getDetails().selectedSeats);
 
-    // this.movieDetails = this.bookingService.getDetails();
-    // for( var mapping of this.movieDetails){
-    //   // console.log("ewfew");
-    //   // console.log(mapping.dates.length);
-    //   for( var i=0; i<mapping.selectedSeats.length; i++){
-    //     this.bookedSeats.push(mapping.selectedSeats[i]);
-    //   }
-    // }
-
-    // console.log('booking seats '+this.bookingService.getDetails());
-    // for(var i in this.bookingService.getDetails().selectedSeats)
-    // this.bookedSeats.push(this.bookingService.getDetails().selectedSeats[i]);
-    // console.log('booked seats '+this.bookedSeats);
-    //this.selectedSeats = [];
     this.$location.path('/payment');
   }
 }

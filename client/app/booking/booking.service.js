@@ -22,9 +22,7 @@ this.paymentDetails ={};
     this.movieDetails.time = time;
   }
 
-  // this.setTime = function(time){
-  //   movieDetails.time = time;
-  // }
+  
 
   this.addSelected = function(selected, grandTotal){
     // movieDetails.bookedSeats = movieDetails.bookedSeats.concat(selected);

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div class="row">
+	<!-- <div class="row">
 Send tickets to
 			<form role="form">
         <div class="col-md-3">
@@ -19,7 +19,7 @@ Send tickets to
     			</button>
     		</div>
 			</form>
-	</div>
+	</div> -->
 
 
 
@@ -30,16 +30,11 @@ Send tickets to
 <div class="row">
   <h2>Payment options</h2>
     <ul class="nav nav-pills nav-stacked col-md-2">
-    <li class="active"><a data-toggle="pill" href="#pay">QuickPay</a></li>
     <li><a data-toggle="pill" href="#card">Credit/Debit Card</a></li>
     <li><a data-toggle="pill" href="#netbank">Net Banking</a></li>
   </ul>
 
   <div class="tab-content col-md-10">
-
-    <!-- <div id="card"  class="tab-pane fade"> -->
-
-
 
       <div id="card" class=" tab-pane fade col-xs-12 col-md-4">
                   <div class="panel panel-default">
@@ -49,22 +44,24 @@ Send tickets to
                           </h3>
                       </div>
                       <div class="panel-body">
-                          <form role="form">
+                          <form name="myForm" role="form">
 														<div class="form-group">
 	                              <label for="cardName">
 	                                  Name</label>
 	                              <div class="input-group">
-	                                  <input type="text" class="form-control" id="cardName" placeholder="Enter name on the card"
+	                                  <input name="myInput" ng-model="myInput" ng-required="myVar" type="text" class="form-control" id="cardName" placeholder="Enter name on the card"
 	                                      required autofocus />
+																				<b class="error" ng-if="!myForm.myInput.$valid">*</b>
 	                              </div>
 	                          </div>
                           <div class="form-group">
                               <label for="cardNumber">
                                   CARD NUMBER</label>
                               <div class="input-group">
-                                  <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                                  <input type="text" name="myInput1" ng-model="myInput1" ng-required="myVar" class="form-control" id="cardNumber" placeholder="Valid Card Number"
                                       required />
                                   <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+																	<b class="error" ng-if="!myForm.myInput1.$valid">*</b>
                               </div>
                           </div>
                           <div class="row">
@@ -73,60 +70,38 @@ Send tickets to
                                       <label for="expityMonth">
                                           EXPIRY DATE</label>
                                       <div class="col-xs-6 col-lg-6 pl-ziro">
-                                          <input type="text" class="form-control" id="expityMonth" min="2" placeholder="MM" required />
+                                          <input type="text" name="myInput2" ng-model="myInput2" ng-required="myVar" class="form-control" id="expityMonth" min="2" placeholder="MM" required />
+																					<b class="error" ng-if="!myForm.myInput2.$valid">*</b>
                                       </div>
                                       <div class="col-xs-6 col-lg-6 pl-ziro">
-                                          <input type="text" class="form-control" id="expityYear" min="2" max="2" placeholder="YY" required /></div>
+                                          <input type="text" name="myInput3" ng-model="myInput3" ng-required="myVar" class="form-control" id="expityYear" min="2" max="2" placeholder="YY" required />
+																					<b class="error" ng-if="!myForm.myInput3.$valid">*</b>
+																				</div>
                                   </div>
                               </div>
                               <div class="col-xs-5 col-md-5 pull-right">
                                   <div class="form-group">
                                       <label for="cvCode">
-                                          CV CODE</label>
-                                      <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                          CVV CODE</label>
+                                      <p><input type="password" name="myInput4" ng-model="myInput4" ng-required="myVar" class="form-control" id="cvCode" placeholder="CVV" />
+																			<span class="error" ng-if="!myForm.myInput4.$valid">*</span></p>
                                   </div>
                               </div>
                           </div>
-                          </form>
+<input type="checkbox"  ng-model="myVar" ng-init="myVar=true">By clicking on "MAKE PAYMENT" you agree to the <a href="#">terms and conditions</a>
                       </div>
-                  </div>
+
                   <ul class="nav nav-pills nav-stacked">
-                      <li class="btn btn-primary btn-lg btn-block" class="active"><span class="badge pull-right">4200</span> Final Payment
+                      <li class="btn btn-primary btn-lg btn-block" class="active"><span class="badge pull-right">{{paymentCtrl.movieDetails.grandTotal}}</span> Final Payment
                       </li>
                   </ul>
                   <br/>
-                  <a href="" ng-click="paymentCtrl.bookSeats()" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+                  <input type="submit" ng-click="paymentCtrl.bookSeats()" class="btn btn-success btn-lg btn-block" value="Pay">
+									</form>
+									</div>
               </div>
 
 
-
-
-
-
-      <!-- <form role="form">
-        <div class="form-group">
-				<input type="number" class="form-control" placeholder="Enter Card No." required/>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Enter name on the card" required="true"/>
-      </div>
-      <div class="row">
-        <div class="form-group">
-        <input type="number" class="form-control" placeholder="MM" required="true"/>
-      </div>
-      <div class="form-group">
-        <input type="number" class="form-control" placeholder="YY" required="true"/>
-      </div>
-      <div class=" form-group pull-right ">
-        <input type="number" class="form-control" placeholder="CVV" required="true"/>
-      </div>
-    </div>
-    <div class="col-md-3 form-group">
-        <button type="submit" class="form-control">Make Payment</button>
-      </div>
-			</form> -->
-
-    <!-- </div> -->
     <div id="netbank" class="tab-pane fade">
 
 			<table>
@@ -160,10 +135,4 @@ Send tickets to
 </table>
     </div>
   </div>
-  <!-- <div class="col-md-4">
-    Booking Summary
-    <p>
-      Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-    </p>
-  </div> -->
 </div>

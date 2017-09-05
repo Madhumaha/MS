@@ -60,40 +60,12 @@ console.log('selected movie '+this.movieDetails);
       }
 
 
-      // this.theatreMappings =  _.filter(this.theatreMappings, function(mapping){ return mapping.movie = movieDetails.name})
+
     this.backdrop = this.bookingService.backdrop;
-      // console.log(movieDetails);
-      //
-      // for( var mapping of this.theatreMappings){
-      //   // console.log("ewfew");
-      //   // console.log(mapping.dates.length);
-      //   for( var i=0; i<mapping.dates.length; i++){
-      //     this.dates.push(mapping.dates[i]);
-      //   }
-      // }
-      // // console.log(this.dates);
-      // this.dates = _.uniq(this.dates);
-      // console.log(this.dates);
-      // // console.log(this.theatreMappings);
-      // this.dates = _.sortBy( this.dates, (date)=>{ return date } );
+
       this.socket.syncUpdates('runningmoviesendpoint', this.theatreMappings);
     });
   }
-
-
-
-  // genDate(date){
-  //     var day = new Date(date).getDate();
-  //     var dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date(date).getDay()];
-  //     var year = new Date(date).getFullYear();
-  //     return `${day}, ${dayName}`;
-  //   }
-
-    // genTiming(timing){
-    //   var hours = new Date(timing).getHours();
-    //   var minutes = new Date(timing).getMinutes();
-    //   return `${hours}.${minutes}`;
-    // }
 
     getTheaterDetails(date){
     function addZero(i) {
@@ -126,22 +98,7 @@ console.log('selected movie '+this.movieDetails);
       this.bookingService.movieDetails.time = timing;
       this.$location.path('/bookingseats');
     }
-  // selectDate(date){
-  //   console.log(date);
-  //   this.timings.date = date;
-  //   this.filteredMappings = _.filter(this.theatreMappings, function(mapping){ return _.contains(mapping.dates, date)});
-  //   console.log(this.filteredMappings);
-  //    //this.$location.path('/timings');
-  // }
-
-
-  // selectTimings(theatre,time){
-  //   console.log(theatre,this.timings.date, time);
-  //   this.bookingService.setTimings(theatre,this.timings.date, time);
-  //   console.log(this.bookingService.getDetails());
-  //   this.$location.path('/bookingseats');
-  // }
-
+  
 }
 
 angular.module('yoTemplateApp')

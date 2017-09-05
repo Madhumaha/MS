@@ -24,25 +24,23 @@ class RunningmoviesComponent {
           this.theatres = response.data;
           this.cityMappings = _.groupBy(this.theatres, (theatre)=>{ return theatre.city; });
           console.log(this.theatres);
-          // this.socket.syncUpdates('theatre', this.theatres);
+
         });
 
         this.$http.get('/api/moviesendpoints').then(response =>{
         this.movies = response.data;
-        // console.log(this.theatres);
-        // this.socket.syncUpdates('movie', this.theatres);
+
       });
 
       this.$http.get('/api/citiesendpoints').then(response =>{
         this.cities = response.data;
-        // console.log(this.theatres);
-        // this.socket.syncUpdates('city', this.theatres);
+
       });
 
       this.$http.get('/api/runningmoviesendpoints').then(response =>{
         this.mappings = response.data;
         console.log(this.mappings);
-        // this.socket.syncUpdates('theatreMapping', this.mapppings);
+
       });
     }
 
@@ -67,8 +65,7 @@ class RunningmoviesComponent {
 
     searchMapping(){
       return  _.find( this.mappings, (mapping)=>{ return mapping.city === this.theatreForm.city && mapping.theatre === this.theatreForm.theatre && mapping.movie === this.theatreForm.movie } );
-      // console.log(this.mappings);
-      // console.log(mapping)
+
   }
 
   addDate(){
@@ -132,7 +129,7 @@ class RunningmoviesComponent {
         this.$http.delete('/api/runningmoviesendpoints/' + mapping._id).then( response =>{
            console.log(response);
            this.mappings = _.reject(this.mappings, (map)=>{ return map._id === mapping._id });
-          //  this.mappings.push(response.data);
+          
          });
       }
       else {

@@ -20,15 +20,6 @@ class MoviesComponent {
   }
 
   searchMovies(){
-    // console.log('hi');
-    // this.$http.get('http://www.omdbapi.com/?t='+this.search.title)
-    //   .then(response => {
-    //     this.movieData = response.data;
-    //     console.log(this.movieData);
-    //     this.socket.syncUpdates('moviesendpoint', this.movieData);
-    //   });
-
-
 var key = '56aae9876c7f8f4d2706bd528d77e895';
 this.$http.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${this.search.title}`)
       .then(response => {
@@ -65,26 +56,12 @@ this.$http.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=$
         Poster: this.movieData.Poster
       });
       this.newMovie = '';
-
-      // this.$http.get('/api/movies').then(response => {
-      //   this.movies = response.data;
-      //   console.log(this.movies);
-      //   // this.socket.syncUpdates('thing', this.awesomeThings);
-      // });
   }
 
   deleteMovie(movie) {
-    // console.log('Work Bitch');
     this.$http.delete('/api/moviesendpoints/' + movie._id).then(response => {
       console.log(response);
     });
-
-    // this.$http.get('/api/movies')
-    // .then(response => {
-    //   this.movies = response.data;
-    //   console.log(this.movies);
-    //   // this.socket.syncUpdates('thing', this.awesomeThings);
-    // });
   }
 
 
