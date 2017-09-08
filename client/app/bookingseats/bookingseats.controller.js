@@ -24,10 +24,16 @@ class BookingseatsComponent {
 
   $onInit(){
     this.movieDetails = this.bookingService.getDetails();
+    // this.$http.get('/api/paymentendpoints').then(response => {
+    //   this.bookedSeats = _.flatten( _.map( _.filter(response.data, (detail)=>{ return detail.name === this.movieDetails.name && detail.theatre === this.movieDetails.theatre } ), (seat)=>{ return seat.bookedSeats }) );
+    //   console.log(this.bookedSeats);
+    // } );
   this.$http.get('/api/paymentendpoints').then( response=>{
       this.payments = response.data;
       this.bookedSeats = _.flatten( _.map( _.filter(response.data, (detail)=>{ return detail.name === this.movieDetails.name && detail.theatre === this.movieDetails.theatre } ), (seat)=>{ return seat.bookedSeats }) );
-      for(let pay of this.payments)
+      this.paidmovies=_.where(this.payments, {name: this.movieDetails.name, date:this.movieDetails.date,time:this.movieDetails.time});
+      console.log('Paid movies '+this.paidmovies);
+      for(let pay of this.paidmovies)
       {
         console.log(pay.bookedSeats);
         for(let seat of pay.bookedSeats)
@@ -75,29 +81,38 @@ class BookingseatsComponent {
 
   isBooked(row, col){
     if(_.find(this.bookedSeats, function(seat){ return seat.row === row && seat.col === col})){
-        return true;
-    } else{
+  return true;
+} else{
       return false;
     }
   }
 
   selectSeat(row, col, classType){
-    for(let pay of this.payments)
+    this.paid=false;
+    console.log('calling selectseat function');
+    this.paidmovies=_.where(this.payments, {name: this.movieDetails.name, date:this.movieDetails.date,time:this.movieDetails.time});
+    for(let pay of this.paidmovies)
     {
       console.log(pay.bookedSeats);
       for(let seat of pay.bookedSeats)
       {
         //seats after payment
         console.log('paid seats are '+seat.row+' '+seat.col);
+        //if the already booked seat is selected
         if(row==seat.row&&col==seat.col)
         {
           alert('Seat is already booked Plz select any other seat')
           document.getElementById('bookingbtn').disabled=true;
-
+this.paid=true;
         }
-        else
-        {
-    if(!this.isSelected(row, col) && !this.isBooked(row, col)){
+
+      }
+    }
+
+      if(this.paid==false)
+      {
+          //if the booked seat is not selected
+     if(!this.isSelected(row, col) && !this.isBooked(row, col)){
 document.getElementById('bookingbtn').disabled=false;
       console.log("selected")
       this.selectedSeats.push({
@@ -105,20 +120,19 @@ document.getElementById('bookingbtn').disabled=false;
         col: col,
         classType: classType
       });
-    }
+     }
 
     else{
-      this.selectedSeats = _.reject(this.selectedSeats, function(seat){ return seat.row === row && seat.col===col })
+       this.selectedSeats = _.reject(this.selectedSeats, function(seat){ return seat.row === row && seat.col===col })
     }
+  }
 
     this.bookingForm.gold = _.filter(this.selectedSeats, function(seat){ return seat.classType === "gold" });
     this.bookingForm.silver = _.filter(this.selectedSeats, function(seat){ return seat.classType === "silver"})
     this.bookingForm.grandTotal = ( (this.bookingForm.gold.length * 200) + (this.bookingForm.silver.length * 100) + 30)
     console.log(this.bookingForm);
     console.log(this.selectedSeats);
-  }
-}
-}
+
 }
 
   bookSeats(){

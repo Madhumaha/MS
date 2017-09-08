@@ -1,25 +1,28 @@
-<form ng-submit="ctrl.addrating()">
-<span class="starRating">
+<h3>Rate this movie:{{ratingCtrl.moviename}}</h3>
 
-<input id="rating5" type="radio" name="ratings" value="5">
+<form ng-submit="ratingCtrl.ratemovie(ratingCtrl.moviename,movierating)">
+<!-- <div class="form-group col-md-6"> -->
+<!-- <input type="text" ng-model="ctrl.blogcomment.bcomment" id="id" class="form-control input-sm" placeholder="Enter your comment"/><br> -->
 
- <label for="rating5">5</label>
+<!-- <div class="form-group col-md-6"></div></div> -->
+<br>
 
- <input id="rating4" type="radio" name="ratings" value="4">
+<!-- <span class="starRating" ng-hide="currentUser.id==selectedBlog.userID"> -->
+<input id="rating5" type="radio" name="ratingss" ng-model="movierating" value="5">
+ <label for="rating5">5</label>  &nbsp; &nbsp; &nbsp;
 
- <label for="rating4">4</label>
+ <input id="rating4" type="radio" name="ratingss" ng-model="movierating" value="4">
+ <label for="rating4">4</label>  &nbsp; &nbsp; &nbsp;
 
- <input id="rating3" type="radio" name="ratings" value="3">
+ <input id="rating3" type="radio" name="ratingss" ng-model="movierating" value="3">
+ <label for="rating3">3</label>  &nbsp; &nbsp; &nbsp;
 
- <label for="rating3">3</label>
+ <input id="rating2" type="radio" name="ratingss" ng-model="movierating" value="2">
+ <label for="rating2">2</label>  &nbsp; &nbsp; &nbsp;
 
- <input id="rating2" type="radio" name="ratings" value="2">
+ <input id="rating1" type="radio" name="ratingss" ng-model="movierating" value="1">
+ <label for="rating1">1</label>  &nbsp; &nbsp; &nbsp;
+<!-- </span>  -->
 
- <label for="rating2">2</label>
-
- <input id="rating1" type="radio" name="ratings" value="1">
-
- <label for="rating1">1</label>
- <button type="submit"  class="btn btn-warning btn-sm">Submit rating</button>
-</span>
-</form>
+<button type="submit"  class="btn btn-warning btn-sm">Submit</button>
+<br></form>

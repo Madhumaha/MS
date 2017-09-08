@@ -92,16 +92,18 @@
                  <p>Average Rating = {{mainCtrl.avgR | number:2}}</p> -->
                 <!--<div ng-show="$ctrl.canRate" id="rateYo">
 
-                </div>
-                <a  class="btn btn-info" id="rateBtn" ng-click="$ctrl.rate(movie.title)">RATE</a>
-              </div> -->
+                </div>-->
+
+            <!--  </div> -->
             </div>
 
             <div class="caption">
               <h3>{{movie.Title}}</h3>
+              <a  class="btn btn-info" id="rateBtn" ng-click="$ctrl.rate(movie.Title)">RATE</a>
               <p><bold>genre:</bold> {{movie.Genre}}</p>
               <p><bold>Release date:</bold> {{movie.Director}}</p>
               <p><bold>Runtime:</bold> {{movie.Runtime}}</p>
+              <p ng-hide="movie.avgRating==NaN"><bold>Overall Rating:</bold>{{movie.avgRating}}</p>
               <div class="row">
                 <button class="btn btn-primary col col-md-12 align-self-center" ng-click="$ctrl.selectMovie(movie.Title)">Book</button>
               </div>

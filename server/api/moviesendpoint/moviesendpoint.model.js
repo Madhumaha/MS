@@ -10,7 +10,8 @@ var MoviesendpointSchema = new mongoose.Schema({
   Actors: String,
   Director: String,
   Runtime: String,
-  Poster:String
+  Poster:String,
+  avgRating:Number
   });
 
 export default mongoose.model('Moviesendpoint', MoviesendpointSchema);

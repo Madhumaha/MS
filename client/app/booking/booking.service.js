@@ -12,6 +12,7 @@ this.movieDetails = {};
   this.movieDetails.grandTotal = ""
 this.paymentDetails ={};
 
+
   this.setName = function(name){
     this.movieDetails.name = name;
   }
@@ -22,7 +23,7 @@ this.paymentDetails ={};
     this.movieDetails.time = time;
   }
 
-  
+
 
   this.addSelected = function(selected, grandTotal){
     // movieDetails.bookedSeats = movieDetails.bookedSeats.concat(selected);

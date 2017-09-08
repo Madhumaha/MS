@@ -68,7 +68,7 @@ export function index(req, res) {
 
 // Gets a single Ratingendpoint from the DB
 export function show(req, res) {
-  return Ratingendpoint.findById(req.params.id).exec()
+  return Ratingendpoint.findById(req.params.Moviename).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
